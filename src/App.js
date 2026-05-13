@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
-import { getRedirectResult, onAuthStateChanged, signOut } from 'firebase/auth';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from './firebase';
 import { useTranslation } from 'react-i18next';
 
@@ -77,22 +77,10 @@ function App() {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    // 1. Перевіряємо результат після redirect
-    getRedirectResult(auth)
-      .then((result) => {
-        if (result?.user) {
-          setUser(result.user);
-        }
-      })
-      .catch((error) => {
-        console.error("Redirect error:", error.code);
-      });
-
-    // 2. Слухач стану авторизації
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log("Auth state changed:", currentUser);
       setUser(currentUser);
     });
-
     return () => unsubscribe();
   }, []);
 

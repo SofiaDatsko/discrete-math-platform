@@ -1,5 +1,5 @@
 import React from 'react';
-import { signInWithRedirect } from 'firebase/auth';
+import { signInWithRedirect, setPersistence, browserLocalPersistence } from 'firebase/auth';
 import { auth, provider } from '../firebase';
 import { useTranslation } from 'react-i18next';
 
@@ -7,7 +7,13 @@ function Login({ setUser }) {
   const { t } = useTranslation();
 
   const handleLogin = () => {
-    signInWithRedirect(auth, provider);
+    setPersistence(auth, browserLocalPersistence)
+      .then(() => {
+        return signInWithRedirect(auth, provider);
+      })
+      .catch((error) => {
+        console.error('Persistence error:', error.code);
+      });
   };
 
   return (
