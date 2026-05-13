@@ -10,15 +10,13 @@ function Login({ setUser }) {
   const handleLogin = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    
-    // Викликаємо синхронно без будь-яких обгорток
+
     signInWithPopup(auth, provider)
       .then((result) => {
         setUser(result.user);
       })
       .catch((error) => {
         if (error.code === 'auth/popup-blocked') {
-          // Якщо popup заблоковано — інформуємо користувача
           alert('Будь ласка, дозвольте спливаючі вікна для цього сайту в налаштуваннях браузера');
         }
         console.error('Помилка входу:', error.code);
