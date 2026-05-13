@@ -1,24 +1,15 @@
 import React from 'react';
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithRedirect } from 'firebase/auth'; // Змінюємо на Redirect
 import { auth, provider } from '../firebase';
 import { useTranslation } from 'react-i18next';
 
-function Login({ setUser }) {
+function Login() {
   const { t } = useTranslation();
 
   const handleLogin = () => {
-  // Виклик має бути першим ділом після натискання
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      setUser(result.user);
-    })
-    .catch((error) => {
-      if (error.code === 'auth/popup-blocked') {
-        alert("Браузер заблокував вікно. Натисніть на іконку блокування в адресному рядку праворуч і дозвольте спливаючі вікна.");
-      }
-      console.error('Login error:', error);
-    });
-};
+    // Це спрацює ЗАВЖДИ, браузер не може це заблокувати
+    signInWithRedirect(auth, provider);
+  };
 
   return (
     <button onClick={handleLogin} className="login-btn" style={{ padding: '8px 16px', backgroundColor: '#fff', color: '#1976d2', border: 'none', borderRadius: '4px', fontWeight: 'bold', cursor: 'pointer' }}>

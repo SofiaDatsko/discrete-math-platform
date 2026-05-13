@@ -78,19 +78,12 @@ function App() {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    // 1. Обробка повернення з Google Auth
-    getRedirectResult(auth)
-      .then((result) => {
-        if (result) {
-          setUser(result.user);
-        }
-      })
-      .catch((error) => {
-        console.error("Помилка редіректу:", error);
-      });
+  // Цей метод підхоплює дані користувача після повернення на сайт
+  getRedirectResult(auth).catch((error) => {
+    console.error("Помилка редіректу:", error);
+  });
 
-    // 2. Слухач стану користувача
-    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+  const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
   });
   return () => unsubscribe();
