@@ -1,2 +1,3 @@
 # discrete-math-platform
-<img width="1976" height="656" alt="image" src="https://github.com/user-attachments/assets/8f3a6c6d-28ea-4307-a9c3-e241cf8006f7" />
+<img width="2560" height="1502" alt="image" src="https://github.com/user-attachments/assets/87c4a5c9-17b2-4552-bcd8-1eebf11a4238" />
+
