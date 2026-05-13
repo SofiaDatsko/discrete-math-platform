@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '../firebase';
 import { useTranslation } from 'react-i18next';
 
 function Login({ setUser }) {
   const { t } = useTranslation();
+  const buttonRef = useRef();
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
     signInWithPopup(auth, provider)
       .then((result) => {
         setUser(result.user);
       })
       .catch((error) => {
+        if (error.code === 'auth/popup-blocked') {
+          alert('Будь ласка, дозвольте спливаючі вікна для цього сайту в налаштуваннях браузера');
+        }
         console.error('Помилка входу:', error.code);
       });
   };
 
   return (
     <button
-      onClick={handleLogin}
+      ref={buttonRef}
+      onMouseDown={handleLogin}
       style={{
         padding: '8px 16px',
         backgroundColor: '#fff',
