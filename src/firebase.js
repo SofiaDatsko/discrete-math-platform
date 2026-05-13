@@ -5,7 +5,7 @@ import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  authDomain: "discrete-math-57425.firebaseapp.com", 
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
@@ -13,16 +13,12 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
-// Ініціалізуємо додаток
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 
-// ВАЖЛИВО: Налаштовуємо провайдера з примусовим вибором акаунта
 export const provider = new GoogleAuthProvider();
-provider.setCustomParameters({ 
-  prompt: 'select_account' 
-});
+provider.setCustomParameters({ prompt: 'select_account' });
 
 export const db = getFirestore(app);
 export const storage = getStorage(app);

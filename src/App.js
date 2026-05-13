@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
-import { onAuthStateChanged, signOut } from 'firebase/auth'; // Додано getRedirectResult
+import { getRedirectResult, onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from './firebase';
 import { useTranslation } from 'react-i18next';
 
-// Імпорти сторінок залишаються без змін...
 import Home from './pages/Home';
 import Graphs from './pages/Graphs';
 import Logic from './pages/Logic';
@@ -78,7 +77,18 @@ function App() {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    // 2. Постійний слухач стану (onAuthStateChanged)
+    // 1. Перевіряємо результат після redirect
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result?.user) {
+          setUser(result.user);
+        }
+      })
+      .catch((error) => {
+        console.error("Redirect error:", error.code);
+      });
+
+    // 2. Слухач стану авторизації
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });

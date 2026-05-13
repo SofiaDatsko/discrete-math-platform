@@ -1,5 +1,5 @@
 import React from 'react';
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithRedirect } from 'firebase/auth';
 import { auth, provider } from '../firebase';
 import { useTranslation } from 'react-i18next';
 
@@ -7,13 +7,7 @@ function Login({ setUser }) {
   const { t } = useTranslation();
 
   const handleLogin = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        setUser(result.user);
-      })
-      .catch((error) => {
-        console.error('Помилка входу:', error.code, error.message);
-      });
+    signInWithRedirect(auth, provider);
   };
 
   return (
