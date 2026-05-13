@@ -90,12 +90,11 @@ function App() {
       });
 
     // 2. Слухач стану користувача
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-
-    return () => unsubscribe();
-  }, []);
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+    setUser(currentUser);
+  });
+  return () => unsubscribe();
+}, []);
 
   useEffect(() => {
     document.title = t('header_title');
