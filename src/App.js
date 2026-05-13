@@ -35,17 +35,31 @@ function UserMenu({ user }) {
   const navigate = useNavigate();
   const { t } = useTranslation(); // Використовуємо хук перекладу
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setOpen(false);
+  import { useEffect } from 'react';
+import { getRedirectResult, onAuthStateChanged } from 'firebase/auth'; // Додай getRedirectResult
+import { auth } from './firebase';
+
+// ... усередині функції App()
+useEffect(() => {
+  // 1. Обробка результату після повернення з Google
+  getRedirectResult(auth)
+    .then((result) => {
+      if (result) {
+        // Якщо вхід через редірект був успішний, встановлюємо користувача
+        setUser(result.user);
       }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+    })
+    .catch((error) => {
+      console.error("Помилка редіректу:", error);
+    });
+
+  // 2. Стандартний слухач стану (onAuthStateChanged)
+  const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+    setUser(currentUser);
+  });
+
+  return () => unsubscribe();
+}, []);
 
   const handleSignOut = () => {
     signOut(auth).then(() => {
