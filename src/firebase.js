@@ -13,12 +13,16 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
+// Ініціалізуємо додаток
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
-export const provider = new GoogleAuthProvider();
 
-provider.setCustomParameters({ prompt: 'select_account' }); 
+// ВАЖЛИВО: Налаштовуємо провайдера з примусовим вибором акаунта
+export const provider = new GoogleAuthProvider();
+provider.setCustomParameters({ 
+  prompt: 'select_account' 
+});
 
 export const db = getFirestore(app);
 export const storage = getStorage(app);
