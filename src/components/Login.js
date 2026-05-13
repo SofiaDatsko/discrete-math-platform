@@ -6,16 +6,16 @@ import { useTranslation } from 'react-i18next';
 function Login({ setUser }) {
   const { t } = useTranslation();
 
-  const handleLogin = async () => {
-    try {
-      // Важливо: викликаємо саме Popup
-      const result = await signInWithPopup(auth, provider);
-      setUser(result.user);
-    } catch (error) {
-      console.error('Login error:', error);
-      // Якщо вікно заблоковано, браузер покаже помилку в консолі
-      alert("Будь ласка, дозвольте спливаючі вікна для цього сайту у налаштуваннях браузера.");
-    }
+  const handleLogin = () => {
+    // Викликаємо вікно безпосередньо. 
+    // Якщо ви вже дозволили вікна в браузері (крок 1), воно спливе миттєво.
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        setUser(result.user);
+      })
+      .catch((error) => {
+        console.error('Login error:', error);
+      });
   };
 
   return (
