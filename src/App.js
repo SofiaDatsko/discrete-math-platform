@@ -78,16 +78,25 @@ function App() {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-  // Цей метод підхоплює дані користувача після повернення на сайт
-  getRedirectResult(auth).catch((error) => {
-    console.error("Помилка редіректу:", error);
-  });
+    // 1. Отримуємо результат редіректу при завантаженні сторінки
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result && result.user) {
+          console.log("Успішний вхід через редірект:", result.user);
+          setUser(result.user); // Встановлюємо користувача відразу
+        }
+      })
+      .catch((error) => {
+        console.error("Помилка редіректу:", error);
+      });
 
-  const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
-  return () => unsubscribe();
-}, []);
+    // 2. Постійний слухач стану (onAuthStateChanged)
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     document.title = t('header_title');
