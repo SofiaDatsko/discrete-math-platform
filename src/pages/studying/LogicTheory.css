@@ -1,0 +1,87 @@
+.theory-container {
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  padding: 20px;
+  background: #f9fbfd;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgb(0 0 0 / 0.1);
+}
+
+.topic-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.topic-list li {
+  margin: 10px 0;
+}
+
+.topic-link {
+  color: #1976d2;
+  text-decoration: none;
+  font-size: 1.15rem;
+  transition: color 0.3s;
+}
+
+.topic-link:hover {
+  color: #0d47a1;
+  text-decoration: underline;
+}
+
+.topic-content {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-top: 15px;
+}
+
+.topic-content h4 {
+  margin-top: 25px;
+  color: #0d47a1;
+  border-bottom: 2px solid #1976d2;
+  padding-bottom: 4px;
+}
+
+.topic-content p {
+  margin-bottom: 15px;
+}
+
+.topic-content ul,
+.topic-content ol {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.logic-table {
+  border-collapse: collapse;
+  margin: 15px 0;
+  width: 100%;
+  max-width: 400px;
+}
+
+.logic-table th,
+.logic-table td {
+  border: 1px solid #1976d2;
+  padding: 8px 12px;
+  text-align: center;
+  background-color: #e3f2fd;
+}
+
+.logic-table th {
+  background-color: #1976d2;
+  color: white;
+}
+
+.back-link {
+  color: #1976d2;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.back-link:hover {
+  color: #0d47a1;
+  text-decoration: underline;
+}

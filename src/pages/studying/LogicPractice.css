@@ -1,0 +1,37 @@
+.practice-container {
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.practice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.practice-card {
+  background: #e3f2fd;
+  border-radius: 12px;
+  padding: 16px;
+  color: #0d47a1;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.practice-card:hover {
+  background: #bbdefb;
+  transform: translateY(-4px);
+}
+
+.practice-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.practice-card p {
+  margin: 0;
+  font-size: 0.95em;
+}

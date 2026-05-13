@@ -1,0 +1,66 @@
+.truth-table-container {
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #f5faff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.truth-table-container h2 {
+  color: #0d47a1;
+}
+
+.truth-table-container p {
+  font-size: 1.1em;
+}
+
+.truth-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.truth-table th,
+.truth-table td {
+  border: 1px solid #90caf9;
+  padding: 8px;
+  text-align: center;
+}
+
+.truth-table th {
+  background-color: #bbdefb;
+  color: #0d47a1;
+}
+
+.truth-table select {
+  padding: 4px;
+  font-size: 1em;
+}
+
+.correct {
+  color: green;
+  font-weight: bold;
+}
+
+.incorrect {
+  color: red;
+  font-weight: bold;
+}
+
+.submit-btn {
+  margin-top: 16px;
+  background-color: #1976d2;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #1565c0;
+}

@@ -1,0 +1,163 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.top-nav {
+  background-color: #1976d2;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+/* Сайдбар */
+.sidebar {
+  width: 200px;
+  background-color: #e3f2fd;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Плитки меню */
+.tile {
+  background-color: #1976d2;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: left;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.tile:hover {
+  background-color: #155a9c;
+}
+
+.tile.active {
+  background-color: #0d47a1;
+}
+
+/* Головна плитка */
+.main-tile {
+  background-color: #ff04ea;
+  color: #ffffff;
+}
+
+.main-tile:hover {
+  background-color: #e663db;
+}
+
+.main-tile.active {
+  background-color: #ff04ea;
+  color: #ffffff;
+}
+
+/* Media-запити для адаптивності */
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    order: -1; /* Показувати перед контентом */
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  main {
+    padding: 10px;
+  }
+
+  .top-nav {
+    font-size: 1.2em;
+  }
+
+  .tile {
+    padding: 12px;
+    font-size: 1em;
+  }
+
+  .sidebar {
+    gap: 8px;
+  }
+}
+
+.menu-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.submenu {
+  margin-left: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.submenu-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1976d2;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.submenu-toggle:hover {
+  background-color: #155a9c;
+}
+
+.submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* відстань між підпунктами */
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.sub-tile {
+  background-color: #64b5f6;
+  color: white;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.sub-tile:hover {
+  background-color: #42a5f5;
+}
+
+.sub-tile.active {
+  background-color: #1e88e5;
+}
+
+.arrow {
+  font-size: 0.8em;
+  margin-left: auto;
+  padding-right: 5px;
+}

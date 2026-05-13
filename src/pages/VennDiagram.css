@@ -1,0 +1,220 @@
+/* Загальний контейнер */
+.venn-container {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9fb;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box; /* Важливо для правильного розрахунку ширини */
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+.input-error {
+  border-color: #e74c3c;
+}
+.input-error:focus {
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Панелі */
+.sets-input-panel, .expression-panel {
+  margin-bottom: 2rem;
+}
+
+.sets-input-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Панель кнопок */
+.button-panel {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.button-panel button {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.button-panel button:hover {
+  background-color: #f0f0f0;
+}
+
+.button-panel button:active {
+  transform: scale(0.95);
+}
+
+.button-panel .clear-btn {
+  background-color: #e74c3c;
+  color: white;
+  border-color: #e74c3c;
+}
+.button-panel .clear-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Результати */
+.results-panel {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.diagram {
+  flex: 1;
+  min-width: 300px;
+}
+
+.result-set {
+  flex: 1;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.result-set h3 {
+  margin-top: 0;
+}
+
+.result-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  word-wrap: break-word;
+  background-color: #eef2f7;
+  padding: 1rem;
+  border-radius: 6px;
+  color: #2c3e50;
+}
+
+
+/* Стилі для SVG діаграми */
+.venn-area path {
+  transition: fill 0.3s ease-in-out, fill-opacity 0.3s ease-in-out;
+  stroke: #fff;
+  stroke-width: 2px;
+}
+.venn-area.highlighted path {
+    fill: #4a90e2; /* Колір підсвічування */
+    fill-opacity: 0.7 !important;
+}
+
+.venn-text {
+    font-size: 18px;
+    font-weight: 500;
+    fill: #444;
+}
+
+/* ... (попередні стилі залишаються без змін) */
+
+/* Результати */
+.results-panel {
+  display: flex;
+  justify-content: center; /* Центруємо діаграму */
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.diagram {
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.result-set {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  margin-top: 1rem;
+}
+
+.result-set h3 {
+  margin-top: 0;
+}
+
+.result-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  word-wrap: break-word;
+  background-color: #eef2f7;
+  padding: 1rem;
+  border-radius: 6px;
+  color: #2c3e50;
+}
+
+
+/* Стилі для SVG діаграми */
+.venn-area path {
+  transition: fill 0.3s ease-in-out, fill-opacity 0.3s ease-in-out;
+  stroke: #fff;
+  stroke-width: 2px;
+}
+.venn-area.highlighted path {
+    fill: #4a90e2; /* Колір підсвічування */
+    fill-opacity: 0.7 !important;
+}
+
+.venn-circle text {
+    font-size: 20px;
+    font-weight: bold;
+    fill: #333;
+}
+
+/* ✅ NEW: Стиль для підписів з елементами */
+.venn-element-label {
+    fill: #000;
+    font-size: 14px;
+    font-weight: 500;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none; /* Щоб текст не заважав клікам */
+}
