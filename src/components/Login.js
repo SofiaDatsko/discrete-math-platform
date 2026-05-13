@@ -1,18 +1,15 @@
 import React from 'react';
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithRedirect } from 'firebase/auth'; // Змінено на Redirect
 import { auth, provider } from '../firebase';
-import { useTranslation } from 'react-i18next'; //
+import { useTranslation } from 'react-i18next';
 
-function Login({ setUser }) {
-  const { t } = useTranslation(); //
+function Login() {
+  const { t } = useTranslation();
 
   const handleLogin = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        setUser(result.user);
-      })
+    // Браузер ніколи не заблокує цей метод, бо це не спливаюче вікно
+    signInWithRedirect(auth, provider)
       .catch((error) => {
-        // Використовуємо консоль для розробника, текст помилки можна залишити технічним
         console.error('Login error:', error);
       });
   };
@@ -31,8 +28,7 @@ function Login({ setUser }) {
         cursor: 'pointer'
       }}
     >
-      {/* Замінюємо статичний текст на ключ з i18n.js */}
-      {t('login_google')} {/* */}
+      {t('login_google')}
     </button>
   );
 }
