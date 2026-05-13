@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
-import { getRedirectResult, onAuthStateChanged, signOut } from 'firebase/auth'; // Додано getRedirectResult
+import { onAuthStateChanged, signOut } from 'firebase/auth'; // Додано getRedirectResult
 import { auth } from './firebase';
 import { useTranslation } from 'react-i18next';
 
@@ -78,18 +78,6 @@ function App() {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    // 1. Отримуємо результат редіректу при завантаженні сторінки
-    getRedirectResult(auth)
-      .then((result) => {
-        if (result && result.user) {
-          console.log("Успішний вхід через редірект:", result.user);
-          setUser(result.user); // Встановлюємо користувача відразу
-        }
-      })
-      .catch((error) => {
-        console.error("Помилка редіректу:", error);
-      });
-
     // 2. Постійний слухач стану (onAuthStateChanged)
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
